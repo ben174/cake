@@ -22,14 +22,14 @@ def old_flight(flight_length, movie_lengths):
     return False
 
 def set_optimized(flight_length, movie_lengths):
-    movie_lengths = list(set(movie_lengths))
+    movie_lengths = set(movie_lengths)
     if len(movie_lengths) < 2:
         return False
     elif len(movie_lengths) == 2:
         return sum(movie_lengths) == flight_length
     for index, length_a in enumerate(movie_lengths):
         remaining = (flight_length - length_a)
-        if remaining in movie_lengths[index+1:]:
+        if remaining in movie_lengths:
             return True
     return False
 
